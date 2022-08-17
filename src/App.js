@@ -15,14 +15,37 @@ class App extends Component {
   }
 
   handleAddClick = (addType) => {
-    if (addType === 'professional') {
+    this.createElem(addType);
+  }
+
+  createElem = (elemType) => {
+    const id = uniqid();
+
+    if (elemType === 'professional') {
+      const elem = <ProfessionalInfo key={id} id={id} onDelete={this.handleDeleteClick} />;
+
       this.setState({
-        professionalComponents: this.state.professionalComponents.concat(<ProfessionalInfo key={uniqid()} />),
+        professionalComponents: this.state.professionalComponents.concat(elem),
       });
     }
-    if (addType === 'education') {
+    if (elemType === 'education') {
+      const elem = <EducationInfo key={id} id={id} onDelete={this.handleDeleteClick} />;
+
       this.setState({
-        educationComponents: this.state.educationComponents.concat(<EducationInfo key={uniqid()} />),
+        educationComponents: this.state.educationComponents.concat(elem),
+      });
+    }
+  }
+
+  handleDeleteClick = (deleteType, id) => {
+    if (deleteType === 'professional') {
+      this.setState({
+        professionalComponents: this.state.professionalComponents.filter(elem => elem.key !== id),
+      });
+    }
+    if (deleteType === 'education') {
+      this.setState({
+        educationComponents: this.state.educationComponents.filter(elem => elem.key !== id),
       });
     }
   }

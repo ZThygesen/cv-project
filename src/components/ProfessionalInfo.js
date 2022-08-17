@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class ProfessionalInfo extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             company: '',
@@ -46,6 +46,8 @@ class ProfessionalInfo extends Component {
                     <p>{description}</p>
                     <p>{startDate}</p>
                     <p>{endDate}</p>
+                    <button onClick={ this.allowEdit }>Edit</button>
+                    <button onClick={ () => this.props.onDelete('professional', this.props.id) } type="button">Delete</button>
                 </>
             );
         }
@@ -95,6 +97,7 @@ class ProfessionalInfo extends Component {
                         onChange={this.handleChange}
                     />
                     <button type="submit">Submit</button>
+                    <button onClick={ () => this.props.onDelete('professional', this.props.id) } type="button">Delete</button>
                 </form>
             </>
         );
