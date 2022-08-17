@@ -41,12 +41,28 @@ class EducationInfo extends Component {
         if (!this.state.editing) {
             return (
                 <>
-                    <p>{school}</p>
-                    <p>{degree}</p>
-                    <p>{startDate}</p>
-                    <p>{endDate}</p>
-                    <button onClick={ this.allowEdit }>Edit</button>
-                    <button onClick={ () => this.props.onDelete('education', this.props.id) } type="button">Delete</button>
+                    <div className="info">
+                        <div className="display">
+                            <p>School:</p>
+                            <p>{school}</p>
+                        </div>
+                        <div className="display">
+                            <p>Degree:</p>
+                            <p>{degree}</p>
+                        </div>
+                        <div className="display">
+                            <p>Start date:</p>
+                            <p>{startDate}</p>
+                        </div>
+                        <div className="display">
+                            <p>End Date:</p>
+                            <p>{endDate}</p>
+                        </div>
+                    </div>
+                    <div className="buttons">
+                        <button onClick={ this.allowEdit }>Edit</button>
+                        <button onClick={ () => this.props.onDelete('education', this.props.id) } type="button">Delete</button>
+                    </div>
                 </>
             );
         }
@@ -63,6 +79,7 @@ class EducationInfo extends Component {
                                 name="school"
                                 value={school}
                                 onChange={this.handleChange}
+                                required
                             />
                         </label>
                         <label htmlFor="degree">
@@ -73,6 +90,7 @@ class EducationInfo extends Component {
                                 name="degree"
                                 value={degree}
                                 onChange={this.handleChange}
+                                required
                             />
                         </label>
                         <label htmlFor="start-date">
@@ -83,6 +101,7 @@ class EducationInfo extends Component {
                                 name="startDate"
                                 value={startDate}
                                 onChange={this.handleChange}
+                                required
                             />
                         </label>
                         <label htmlFor="end-date">
@@ -93,11 +112,12 @@ class EducationInfo extends Component {
                                 name="endDate"
                                 value={endDate}
                                 onChange={this.handleChange}
+                                required
                             />
                         </label>
                     </div>
                     <div className="buttons">
-                        <button type="submit">Submit</button>
+                        <button type="submit">Save</button>
                         <button onClick={ () => this.props.onDelete('education', this.props.id) } type="button">Delete</button>
                     </div>
                 </form>

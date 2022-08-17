@@ -24,11 +24,21 @@
 
 .education input {
     height: 35px;
+    border-radius: 12px;
+    border: 0;
+    padding-left: 10px;
+    font-size: 18px;
+    background-color: var(--primary);
+}
+
+.education input:focus {
+    outline: 2px solid #273c59;
 }
 
 .education .buttons {
     display: flex;
     gap: 40px;
+    margin-bottom: 40px;
 }
 
 /* Preview */

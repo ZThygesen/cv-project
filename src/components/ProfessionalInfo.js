@@ -42,13 +42,32 @@ class ProfessionalInfo extends Component {
         if (!this.state.editing) {
             return (
                 <>
-                    <p>{company}</p>
-                    <p>{position}</p>
-                    <p>{description}</p>
-                    <p>{startDate}</p>
-                    <p>{endDate}</p>
-                    <button onClick={ this.allowEdit }>Edit</button>
-                    <button onClick={ () => this.props.onDelete('professional', this.props.id) } type="button">Delete</button>
+                    <div className="info">
+                        <div className="display">
+                            <p>Company:</p>
+                            <p>{company}</p>
+                        </div>
+                        <div className="display">
+                            <p>Job Title:</p>
+                            <p>{position}</p>
+                        </div>
+                        <div className="display">
+                            <p>Job Description:</p>
+                            <p>{description}</p>
+                        </div>
+                        <div className="display">
+                            <p>Start Date:</p>
+                            <p>{startDate}</p>
+                        </div>
+                        <div className="display">
+                            <p>End Date:</p>
+                            <p>{endDate}</p>
+                        </div>
+                    </div>
+                    <div className="buttons">
+                        <button onClick={ this.allowEdit }>Edit</button>
+                        <button onClick={ () => this.props.onDelete('professional', this.props.id) } type="button">Delete</button>
+                    </div>
                 </>
             );
         }
@@ -65,6 +84,7 @@ class ProfessionalInfo extends Component {
                                 name="company"
                                 value={company}
                                 onChange={this.handleChange}
+                                required
                             />
                         </label>
                         <label htmlFor="position" className="position">
@@ -75,6 +95,7 @@ class ProfessionalInfo extends Component {
                                 name="position"
                                 value={position}
                                 onChange={this.handleChange}
+                                required
                             />
                         </label>
                         <label htmlFor="description" className="description">
@@ -85,6 +106,7 @@ class ProfessionalInfo extends Component {
                                 rows={5}
                                 value={description}
                                 onChange={this.handleChange}
+                                required
                             />
                         </label>
                         <label htmlFor="start-date" className="start-date">
@@ -95,6 +117,7 @@ class ProfessionalInfo extends Component {
                                 name="startDate"
                                 value={startDate}
                                 onChange={this.handleChange}
+                                required
                             />
                         </label>
                         <label htmlFor="end-date" className="end-date">
@@ -105,6 +128,7 @@ class ProfessionalInfo extends Component {
                                 name="endDate"
                                 value={endDate}
                                 onChange={this.handleChange}
+                                required
                             />
                         </label>
                     </div>

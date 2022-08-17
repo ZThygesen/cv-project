@@ -64,12 +64,16 @@ class App extends Component {
           </div>
           <div className="professional">
             <h1>Professional Info</h1>
-            { this.state.professionalComponents }
+            <div className="elems">
+              {this.state.professionalComponents}
+            </div>
             <button onClick={ () => this.handleAddClick('professional') } id='professional-info-btn'>+ Professional Info</button>
           </div>
           <div className="education">
             <h1>Education Info</h1>
-            { this.state.educationComponents }
+            <div className="elems">
+              {this.state.educationComponents}
+            </div>
             <button onClick={ () => this.handleAddClick('education') } id='education-info-btn'>+ Education Info</button>
           </div>
         </div>

@@ -1,13 +1,15 @@
 :root {
-    --bgc: white;
-    --header-bgc: grey;
+    --primary: #fbfaf5;
+    --dark: #6b7a8f;
 }
 
 body {
     min-width: 100vw;
     min-height: 100vh;
     margin: 0;
-    background-color: var(--bgc);
+    background-color: var(--primary);
+    color: var(--primary);
+    font-family: 'Mukta', sans-serif;
 }
 
 header {
@@ -15,7 +17,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--header-bgc);
+    background-color: var(--dark);
+    color: var(--primary);
 }
 
 .container {
@@ -32,10 +35,39 @@ header {
     align-items: flex-start;
     justify-content: center;
     width: min(100vw, 1000px);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .personal, .professional, .education {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    background-color: var(--dark);
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+.elems {
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+button {
+    border-style: none;
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    font-family: 'Mukta', sans-serif;
+    font-size: 18px;
+    padding: 5px 20px;
+    background-color: var(--primary);
+    transition: all 0.2s;
+}
+
+button:hover {
+    cursor: pointer;
+    border: 2px solid var(--primary);
+    background-color: var(--dark);
+    color: var(--primary);
 }
