@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PersonalInfo from './components/PersonalInfo';
 import ProfessionalInfo from './components/ProfessionalInfo';
 import EducationInfo from './components/EducationInfo';
+import './styles/App.css';
 import uniqid from 'uniqid';
 
 class App extends Component {
@@ -52,16 +53,25 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Hellooo</h1>
-        <PersonalInfo />
-        <div className='professional'>
-          { this.state.professionalComponents }
-          <button onClick={ () => this.handleAddClick('professional') } id='professional-info-btn'>+ Professional Info</button>
-        </div>
-        <div className='education'>
-          { this.state.educationComponents }
-          <button onClick={ () => this.handleAddClick('education') } id='education-info-btn'>+ Education Info</button>
+      <div className="container">
+        <header>
+          <h1>CV Application</h1>
+        </header>
+        <div className="main">
+          <div className="personal">
+            <h1>Personal Info</h1>
+            <PersonalInfo />
+          </div>
+          <div className="professional">
+            <h1>Professional Info</h1>
+            { this.state.professionalComponents }
+            <button onClick={ () => this.handleAddClick('professional') } id='professional-info-btn'>+ Professional Info</button>
+          </div>
+          <div className="education">
+            <h1>Education Info</h1>
+            { this.state.educationComponents }
+            <button onClick={ () => this.handleAddClick('education') } id='education-info-btn'>+ Education Info</button>
+          </div>
         </div>
       </div>
     );

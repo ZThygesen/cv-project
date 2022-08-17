@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/ProfessionalForm.css';
 
 class ProfessionalInfo extends Component {
     constructor(props) {
@@ -54,50 +55,63 @@ class ProfessionalInfo extends Component {
 
         return (
             <>
-                <h1>Professional Info!</h1>
                 <form onSubmit={ this.onSubmitInfo }>
-                    <label htmlFor="company">Company Name</label>
-                    <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        value={company}
-                        onChange={this.handleChange}
-                    />
-                    <label htmlFor="position">Job Title</label>
-                    <input
-                        type="text"
-                        id="position"
-                        name="position"
-                        value={position}
-                        onChange={this.handleChange}
-                    />
-                    <label htmlFor="description">Job Description</label>
-                    <input
-                        type="text-area"
-                        id="description"
-                        name="description"
-                        value={description}
-                        onChange={this.handleChange}
-                    />
-                    <label htmlFor="start-date">Start Date</label>
-                    <input
-                        type="date"
-                        id="start-date"
-                        name="startDate"
-                        value={startDate}
-                        onChange={this.handleChange}
-                    />
-                    <label htmlFor="end-date">End Date</label>
-                    <input
-                        type="date"
-                        id="end-date"
-                        name="endDate"
-                        value={endDate}
-                        onChange={this.handleChange}
-                    />
-                    <button type="submit">Submit</button>
-                    <button onClick={ () => this.props.onDelete('professional', this.props.id) } type="button">Delete</button>
+                    <div id="inputs">
+                        <label htmlFor="company" className="company">
+                            Company Name
+                            <input
+                                type="text"
+                                id="company"
+                                name="company"
+                                value={company}
+                                onChange={this.handleChange}
+                            />
+                        </label>
+                        <label htmlFor="position" className="position">
+                            Job Title
+                            <input
+                                type="text"
+                                id="position"
+                                name="position"
+                                value={position}
+                                onChange={this.handleChange}
+                            />
+                        </label>
+                        <label htmlFor="description" className="description">
+                            Job Description
+                            <textarea
+                                id="description"
+                                name="description"
+                                rows={5}
+                                value={description}
+                                onChange={this.handleChange}
+                            />
+                        </label>
+                        <label htmlFor="start-date" className="start-date">
+                            Start Date
+                            <input
+                                type="date"
+                                id="start-date"
+                                name="startDate"
+                                value={startDate}
+                                onChange={this.handleChange}
+                            />
+                        </label>
+                        <label htmlFor="end-date" className="end-date">
+                            End Date
+                            <input
+                                type="date"
+                                id="end-date"
+                                name="endDate"
+                                value={endDate}
+                                onChange={this.handleChange}
+                            />
+                        </label>
+                    </div>
+                    <div className="buttons">
+                        <button type="submit">Save</button>
+                        <button onClick={ () => this.props.onDelete('professional', this.props.id) } type="button">Delete</button>
+                    </div>
                 </form>
             </>
         );

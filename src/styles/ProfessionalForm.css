@@ -1,0 +1,74 @@
+/* Editing */
+.professional form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.professional #inputs {
+    display: grid;
+    grid-template-areas: 
+        'company position'
+        'start-date end-date'
+        'description description';
+    align-items: center;
+    column-gap: 50px;
+    row-gap: 20px;
+    width: 100%;
+}
+
+.professional label {
+    display: flex;
+    flex-direction: column;
+}
+
+.professional input {
+    height: 35px;
+}
+
+.professional textarea {
+    resize: none;
+}
+
+.professional .buttons {
+    display: flex;
+    gap: 40px;
+}
+
+/* Preview */
+.professional .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.professional .display {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    width: 100%;
+}
+
+/* Grid items */
+.professional .company {
+    grid-area: company;
+}
+
+.professional .position {
+    grid-area: position;
+}
+
+.professional .description {
+    grid-area: description;
+}
+
+.professional .start-date {
+    grid-area: start-date;
+}
+
+.professional .end-date {
+    grid-area: end-date;
+}

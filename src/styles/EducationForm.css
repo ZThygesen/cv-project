@@ -1,0 +1,46 @@
+/* Editing */
+.education form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.education #inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    column-gap: 50px;
+    row-gap: 20px;
+    width: 100%;
+}
+
+.education label {
+    display: flex;
+    flex-direction: column;
+}
+
+.education input {
+    height: 35px;
+}
+
+.education .buttons {
+    display: flex;
+    gap: 40px;
+}
+
+/* Preview */
+.education .info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.education .display {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    width: 100%;
+}

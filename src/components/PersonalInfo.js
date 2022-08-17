@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import '../styles/PersonalForm.css';
 
 class PersonalInfo extends Component {
     constructor() {
         super();
 
         this.state = {
-            name: '',
+            firstName: '',
+            lastName: '',
             email: '',
             phone: '',
             editing: true,
@@ -34,55 +36,87 @@ class PersonalInfo extends Component {
     }
 
     render() {
-        const { name, email, phone } = this.state;
+        const { firstName, lastName, email, phone } = this.state;
         
         if (!this.state.editing) {
             return (
                 <>
-                    <p>{name}</p>
-                    <p>{email}</p>
-                    <p>{phone}</p>
-                    <button onClick={ this.allowEdit } className="edit">Edit</button>
+                    <div className="info">
+                        <div className="display">
+                            <p>Name:</p>
+                            <p>{firstName} {lastName}</p>
+                        </div>
+                        <div className="display">
+                            <p>Email:</p>
+                            <p>{email}</p>
+                        </div>
+                        <div className="display">
+                            <p>Phone:</p>
+                            <p>{phone}</p>
+                        </div>
+                    </div>
+                    <button onClick={this.allowEdit} className="edit">Edit</button>
                 </>
             );
         }
 
         return (
-            <>
-                <h1>Personal Info!</h1>
-                <form onSubmit={this.onSubmitInfo}>
-                    <label htmlFor="name">Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={name}
-                        onChange={this.handleChange}
-                    />
+            <form onSubmit={this.onSubmitInfo}>
+                <div id="inputs">
+                    <label htmlFor="first-name">
+                        First Name
+                        <input
+                            type="text"
+                            id="first-name"
+                            name="firstName"
+                            placeholder="John"
+                            value={firstName}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </label>
+                    <label htmlFor="last-name">
+                        Last Name
+                        <input
+                            type="text"
+                            id="last-name"
+                            name="lastName"
+                            placeholder="Doe"
+                            value={lastName}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </label>
+                    <label htmlFor="email">
+                        Email
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="example@email.com"
+                            value={email}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </label>
+                    <label htmlFor="phone">
+                        Phone
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="123-456-7890"
+                            title="123-456-7890"
+                            pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"
+                            value={phone}
+                            onChange={this.handleChange}
+                            required
+                        />
+                    </label>
+                </div>
 
-                    <label htmlFor="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={email}
-                        onChange={this.handleChange}
-                    />
-
-                    <label htmlFor="phone">Phone</label>
-                    <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        title="###-###-####"
-                        pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$"
-                        value={phone}
-                        onChange={this.handleChange}
-                    />
-
-                    <button type="submit">Submit</button>
-                </form>
-            </>
+                <button type="submit">Save</button>
+            </form>
         );
     }
 
