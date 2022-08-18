@@ -1,85 +1,69 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PersonalInfo from './components/PersonalInfo';
 import ProfessionalInfo from './components/ProfessionalInfo';
 import EducationInfo from './components/EducationInfo';
 import './styles/App.css';
 import uniqid from 'uniqid';
 
-class App extends Component {
-  constructor() {
-    super();
+const App = () => {
+  const [professionalComponents, setProfessionalComponents] = useState([]);
+  const [educationComponents, setEducationComponents] = useState([]);
 
-    this.state = {
-      professionalComponents: [],
-      educationComponents: [],
-    };
-  }
+  const handleAddClick = (addType) => {
+    createElem(addType);
+  };
 
-  handleAddClick = (addType) => {
-    this.createElem(addType);
-  }
-
-  createElem = (elemType) => {
+  const createElem = (elemType) => {
     const id = uniqid();
 
     if (elemType === 'professional') {
-      const elem = <ProfessionalInfo key={id} id={id} onDelete={this.handleDeleteClick} />;
+      const elem = <ProfessionalInfo key={id} id={id} onDelete={handleDeleteClick} />;
 
-      this.setState({
-        professionalComponents: this.state.professionalComponents.concat(elem),
-      });
+      setProfessionalComponents(professionalComponents.concat(elem));
     }
     if (elemType === 'education') {
-      const elem = <EducationInfo key={id} id={id} onDelete={this.handleDeleteClick} />;
+      const elem = <EducationInfo key={id} id={id} onDelete={handleDeleteClick} />;
 
-      this.setState({
-        educationComponents: this.state.educationComponents.concat(elem),
-      });
+      setEducationComponents(educationComponents.concat(elem));
     }
-  }
+  };
 
-  handleDeleteClick = (deleteType, id) => {
+  const handleDeleteClick = (deleteType, id) => {
     if (deleteType === 'professional') {
-      this.setState({
-        professionalComponents: this.state.professionalComponents.filter(elem => elem.key !== id),
-      });
+      setProfessionalComponents(professionalComponents.filter(elem => elem.key !== id));
     }
     if (deleteType === 'education') {
-      this.setState({
-        educationComponents: this.state.educationComponents.filter(elem => elem.key !== id),
-      });
+      setEducationComponents(educationComponents.filter(elem => elem.key !== id));
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className="container">
-        <header>
-          <h1>CV Application</h1>
-        </header>
-        <div className="main">
-          <div className="personal">
-            <h1>Personal Info</h1>
-            <PersonalInfo />
+  return (
+    <div className="container">
+      <header>
+        <h1>CV Application</h1>
+      </header>
+      <div className="main">
+        <div className="personal">
+          <h1>Personal Info</h1>
+          <PersonalInfo />
+        </div>
+        <div className="professional">
+          <h1>Professional Info</h1>
+          <div className="elems">
+            {professionalComponents}
           </div>
-          <div className="professional">
-            <h1>Professional Info</h1>
-            <div className="elems">
-              {this.state.professionalComponents}
-            </div>
-            <button onClick={ () => this.handleAddClick('professional') } id='professional-info-btn'>+ Professional Info</button>
+          <button onClick={ () => handleAddClick('professional') } id='professional-info-btn'>+ Professional Info</button>
+        </div>
+        <div className="education">
+          <h1>Education Info</h1>
+          <div className="elems">
+            {educationComponents}
           </div>
-          <div className="education">
-            <h1>Education Info</h1>
-            <div className="elems">
-              {this.state.educationComponents}
-            </div>
-            <button onClick={ () => this.handleAddClick('education') } id='education-info-btn'>+ Education Info</button>
-          </div>
+          <button onClick={ () => handleAddClick('education') } id='education-info-btn'>+ Education Info</button>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
